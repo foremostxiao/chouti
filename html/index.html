@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--设置屏幕宽度为设备宽度-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--告诉IE浏览器以最高级模式渲染当前网页-->
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>抽屉新热榜</title>
+    <link rel="icon" href="../images/chouti.ico">
+
+    <!-- 链接 Bootstrap 必须引入bootstrap -->
+    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7/css/bootstrap.css">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--兼容IE9以下的版本-->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--外链接css-->
+    <link type="text/css" rel="stylesheet" href="../css/index.css">
+
+
+</head>
+<body>
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <!--外链接js-->
+    <script type="text/javascript" src="../js/index.js" ></script>
+
+<!-- 1 固定导航栏 自定义my-navbar-->
+        <nav class="navbar navbar-default navbar-fixed-top my-navbar">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img src="../images/logo2.png" alt="logo"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">全部<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">42区</a></li>
+                <li><a href="#">段子</a></li>
+                <li><a href="#">图片</a></li>
+                <li><a href="#">挨踢1024</a></li>
+                <li><a href="#">你问我答</a></li>
+              </ul>
+                <!--搜索框-->
+              <form class="navbar-form navbar-right">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">
+                      <span class="glyphicon glyphicon-zoom-in"></span>
+                </button>
+              </form>
+                <!--注册栏-->
+              <ul class="nav navbar-nav navbar-right ">
+                <li><a href="javascript:login()" >注册</a></li>
+                <li><a href="javascript:login()">登录</a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+
+<!--模态框　登陆注册功能
+-->
+    <div class="modal fade login" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1 myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content clearfix">
+
+                <!--登录页面-->
+                <div class="pull-left">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                        <h4 class="modal-title" id="myModalLabel1">登录</h4>
+                    </div>
+
+                    <div class="modal-body my-modal-body">
+                        <ul class="nav nav-pills">
+                            <li role="presentation" class="active"><a href="#">手机号登录</a></li>
+                            <li role="presentation"><a href="#">用户名登录</a></li>
+                        </ul>
+
+                        <!--手机号登录-->
+                        <div class="my-phone-login">
+                            <form>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>中国台湾（+886）</option>
+                                        <option>中国（+86）</option>
+                                        <option>中国香港（+852）</option>
+                                        <option>中国澳门（+853）</option>
+                                        <option>美国（+1）</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleInputText1" placeholder="手机号">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked> <small>一个月内自动登录</small>
+                                    </label>
+                                    <small>&nbsp;&nbsp;&nbsp;&nbsp;忘记密码？</small>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--用户名登录-->
+                        <div class="my-user-login">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleInputText2" placeholder="用户名">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="密码">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked> <small>一个月内自动登录</small>
+                                    </label>
+                                    <small>&nbsp;&nbsp;&nbsp;&nbsp;忘记密码？</small>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">登录</button>
+                    </div>
+                </div>
+
+                <!--注册页面-->
+                <div class="pull-right">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel2">注册</h4>
+                    </div>
+
+                    <div class="modal-body my-modal-body">
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" class="active"><a href="#">1.填写手机号</a></li>
+                            <li role="presentation"><a href="#">2.填写基本资料</a></li>
+                        </ul>
+
+                        <!--填写手机号-->
+                        <div class="my-phone-register">
+                            <form>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>中国台湾（+886）</option>
+                                        <option>中国（+86）</option>
+                                        <option>中国香港（+852）</option>
+                                        <option>中国澳门（+853）</option>
+                                        <option>美国（+1）</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <input type="text" class="form-control" id="exampleInputText3" placeholder="手机号">
+                                    <button type="submit" class="btn btn-primary">获取验证码</button>
+                                </div>
+                                <div class="form-group text-right" style="margin-top: -10px;">
+                                    <small>收不到短信？</small>
+                                    <small style="color: #337ab7;">获取语音验证码</small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleInputText4" placeholder="验证码">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="密码">
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--填写基本信息-->
+                        <div class="my-info-register">
+                            <form>
+                                <div class="form-group">
+                                     <input type="text" class="form-control" id="exampleInputText5" placeholder="xxx" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 女
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 男
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control my-country">
+                                        <option value="0">中国</option>
+                                        <option value="1">海外</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <select class="form-control">
+                                        <option>北京</option>
+                                        <option>上海</option>
+                                        <option>广州</option>
+                                        <option>深圳</option>
+                                    </select>
+                                    <select class="form-control">
+                                        <option>西城</option>
+                                        <option>东城</option>
+                                        <option>朝阳</option>
+                                        <option>海淀</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3" placeholder="签名档（100个汉字以内）"></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary my-btn-next" onclick="btnNext();">下一步</button>
+                        <button type="button" class="btn btn-primary my-btn-submit" data-dismiss="modal">提交资料</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--发布内容 模态框-->
+    <div class="modal fade modal-publish" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">分享新发现</h4>
+          </div>
+            <!--内容区域-->
+          <div class="modal-body my-modal-body2">
+            <!--标签页-->
+              <ul class="nav nav-pills">
+                  <li role="presentation" class="active"><a href="#">连接</a></li>
+                  <li role="presentation"><a href="#">文字</a></li>
+                  <li role="presentation"><a href="#">图片</a></li>
+              </ul>
+              <!--连接的内容-->
+              <div class="publish">
+                  <p>添加连接</p>
+                  <input placeholder='http://'>
+                   <p>标题</p>
+                  <input >
+                   <p>添加摘要(选填)</p>
+                  <input class="publish-abstract">
+                  <div>
+                      <a>发布到：</a>
+                      <span><button>42区</button></span>
+                      <span><button>段子</button></span>
+                      <span><button>图片</button></span>
+                      <span><button>你问我答</button></span>
+                  </div>
+              </div>
+              <!--文字-->
+              <div class="publish2">
+                  <input placeholder="发布段子" class="publish-abstract">
+                  <div>
+                      <a>发布到：</a>
+                      <span><button>42区</button></span>
+                      <span><button>段子</button></span>
+                      <span><button>图片</button></span>
+                      <span><button>你问我答</button></span>
+                  </div>
+              </div>
+              <!--图片   全局样式表单-->
+              <div class="publish3">
+                  <form>
+                   <div class="form-group">
+                     <label for="exampleInputFile">File input</label>
+                     <input type="file" id="exampleInputFile">
+                   </div>
+                    <div class="form-group2">
+                        <input class="publish-abstract" placeholder="发布段子" >
+                        <div>
+                          <a>发布到：</a>
+                          <span><button>42区</button></span>
+                          <span><button>段子</button></span>
+                          <span><button>图片</button></span>
+                          <span><button>你问我答</button></span>
+                        </div>
+                    </div>
+                  </form>
+              </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <!--中心内容　　栅格系统-->
+    <div class="container my-container">
+        <div class="row">
+            <!--左侧列表内容-->
+            <div class="col-md-8">
+                <!--标签页-->
+                <div class="clearfix my-nav">
+                    <ul class="nav nav-pills pull-left my-navbar-nav top-navbar-nav">
+                        <li class="active"><a href="#">最热</a></li>
+                        <li><a href="#">发现</a></li>
+                        <li><a href="#">人类发布</a></li>
+                    </ul>
+                    <ul class="nav nav-pills pull-right my-navbar-nav my-active top-navbar-nav2">
+                        <li class="active"><a href="#">限时排序</a></li>
+                        <li><a href="#">24小时</a></li>
+                        <li><a href="#">3天</a></li>
+                        <button class="btn-success" onclick="publish()"><span>发布</span></button>
+
+                    </ul>
+
+                </div>
+
+                <!--内容1-->
+                <div class="list-group my-list-content">
+                    <a href="#" class="list-group-item clearfix">
+                        <div class="pull-left clearfix">
+                            <h5>【福建晋华回应美国被禁：美光把晋华视为威胁，不存在窃取技术行为】&nbsp;&nbsp;<small>-www.yystv.cn<span>&nbsp;42区</span></small></h5>
+                            <small>陷在舆论中心一周后，被视为中国存储业三驾马车之一的福建晋华终于对外发声。"</small>
+                            <p class="clearfix my-p-left pull-left">
+                                <span class="span1 span_click1" title="推荐"><span class="span_count1">1</span></span>
+                                <span class="span2 span_click2" title="评论"><span class="span_count2" >2</span></span>
+                                <span class="span3 span_click3" title="加入私藏"><span>私藏</span></span>
+                                <span class="span4"></span>
+                                <span class="span6">alex</span>
+                                <span class="span5">8分钟前</span>
+                                <small class="span7">入热榜</small>
+                            </p>
+                            <p class="clearfix my-p-right pull-right">
+                                <span class="span1_1">分享到</span>
+                                <span class="span2_1"></span>
+                                <span class="span3_1"></span>
+                                <span class="span4_1"></span>
+                                <span class="span5_1"></span>
+
+                            </p>
+                        </div>
+
+                        <!--文章图片-->
+                        <div class="pull-right my-pull-right">
+                            <img src="../images/content1.png" alt="小图">
+                        </div>
+                    </a>
+
+                    <!--评论区域-->
+                    <div class="panel panel-default my-comment">
+                        <div class="panel-heading">最热评论(<span class="com-count">2</span>)<span class="close">X</span></div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网名1</span>
+                                        <span class="com-span3">赞同这个</span>
+                                        <span class="com-span4">1分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网名2</span>
+                                        <span class="com-span3">不赞同这个</span>
+                                        <span class="com-span4">1小时2分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+
+                            </ul>
+                            <div class="form-inline">
+                                <textarea class="form-control" rows="2"></textarea>
+                                <button type="button" class="btn btn-info">评论</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--内容2-->
+                <div class="list-group my-list-content">
+                    <a href="#" class="list-group-item clearfix">
+                        <div class="pull-left clearfix">
+                            <h5>"好好的人，为什么偏爱吃臭菜"&nbsp;&nbsp;<small>-www.jiemian.com<span>&nbsp;段子</span></small></h5>
+                            <small>无法理解的饮食喜好比如长沙臭豆腐</small>
+                            <p class="clearfix my-p-left pull-left">
+                                <span class="span1 span_click1" title="推荐"><span class="span_count1">2</span></span>
+                                <span class="span2 span_click2" title="评论"><span class="span_count2" >3</span></span>
+                                <span class="span3 span_click3" title="加入私藏"><span>私藏</span></span>
+                                <span class="span4"></span>
+                                <span class="span6">alex</span>
+                                <span class="span5">10分钟前</span>
+                                <small class="span7">入热榜</small>
+                            </p>
+                            <p class="clearfix my-p-right pull-right">
+                                <span class="span1_1">分享到</span>
+                                <span class="span2_1"></span>
+                                <span class="span3_1"></span>
+                                <span class="span4_1"></span>
+                                <span class="span5_1"></span>
+
+                            </p>
+                        </div>
+
+                        <!--文章图片-->
+                        <div class="pull-right my-pull-right">
+                            <img src="../images/content2.png" alt="小图">
+                        </div>
+                    </a>
+
+                    <!--评论区域-->
+                    <div class="panel panel-default my-comment">
+                        <div class="panel-heading">最热评论(<span class="com-count">3</span>)<span class="close">X</span></div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友1</span>
+                                        <span class="com-span3">这个观点挺好！</span>
+                                        <span class="com-span4">1分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友2</span>
+                                        <span class="com-span3">我不赞成这个观点。</span>
+                                        <span class="com-span4">1小时2分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友3</span>
+                                        <span class="com-span3">你们说的都不对！</span>
+                                        <span class="com-span4">2小时12分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+
+                            </ul>
+                            <div class="form-inline">
+                                <textarea class="form-control" rows="2"></textarea>
+                                <button type="button" class="btn btn-info">评论</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--内容3-->
+                <div class="list-group my-list-content">
+                    <a href="#" class="list-group-item clearfix">
+                        <div class="pull-left clearfix">
+                            <h5>【2016年武汉过江公交乘客疯抢方向盘，男子一把抱住近日获奖10万】&nbsp;&nbsp;<small>-www.yystv.cn<span>&nbsp;42区</span></small></h5>
+                            <small>日前，这惊险一幕被武汉当地媒体重新报道出来，让一名企业家坐不住了。武汉餐饮业协会会长刘国梁专程赶到长江日报报业集团大楼，当面给报道中英勇冲上前的男乘客——吴烨，颁发了10万元重奖。</small>
+                            <p class="clearfix my-p-left pull-left">
+                                <span class="span1 span_click1" title="推荐"><span class="span_count1">1</span></span>
+                                <span class="span2 span_click2" title="评论"><span class="span_count2" >2</span></span>
+                                <span class="span3 span_click3" title="加入私藏"><span>私藏</span></span>
+                                <span class="span4"></span>
+                                <span class="span6">alex</span>
+                                <span class="span5">15分钟前</span>
+                                <small class="span7">入热榜</small>
+                            </p>
+                            <p class="clearfix my-p-right pull-right">
+                                <span class="span1_1">分享到</span>
+                                <span class="span2_1"></span>
+                                <span class="span3_1"></span>
+                                <span class="span4_1"></span>
+                                <span class="span5_1"></span>
+
+                            </p>
+                        </div>
+
+                        <!--文章图片-->
+                        <div class="pull-right my-pull-right">
+                            <img src="../images/content3.png" alt="小图">
+                        </div>
+                    </a>
+
+                    <!--评论区域-->
+                    <div class="panel panel-default my-comment">
+                        <div class="panel-heading">最热评论(<span class="com-count">2</span>)<span class="close">X</span></div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友1</span>
+                                        <span class="com-span3">这个观点挺好！</span>
+                                        <span class="com-span4">47分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友2</span>
+                                        <span class="com-span3">我不赞成这个观点。</span>
+                                        <span class="com-span4">1小时2分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+
+                            </ul>
+                            <div class="form-inline">
+                                <textarea class="form-control" rows="2"></textarea>
+                                <button type="button" class="btn btn-info">评论</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--内容4-->
+                <div class="list-group my-list-content">
+                    <a href="#" class="list-group-item clearfix">
+                        <div class="pull-left clearfix">
+                            <h5>家有宠物&nbsp;&nbsp;<small>-estate.caijing.com.cn<span>&nbsp;挨踢1024</span></small></h5>
+                            <small>"给大家汇报一下我家小美的情况，给小美检测了耳螨和弓形虫，结果都是阴性。现在它已经长的胖胖的了，是一只吃吃睡睡的家养狸花猫了。</small>
+                            <p class="clearfix my-p-left pull-left">
+                                <span class="span1 span_click1" title="推荐"><span class="span_count1">1</span></span>
+                                <span class="span2 span_click2" title="评论"><span class="span_count2" >2</span></span>
+                                <span class="span3 span_click3" title="加入私藏"><span>私藏</span></span>
+                                <span class="span4"></span>
+                                <span class="span6">alex</span>
+                                <span class="span5">8分钟前</span>
+                                <small class="span7">入热榜</small>
+                            </p>
+                            <p class="clearfix my-p-right pull-right">
+                                <span class="span1_1">分享到</span>
+                                <span class="span2_1"></span>
+                                <span class="span3_1"></span>
+                                <span class="span4_1"></span>
+                                <span class="span5_1"></span>
+
+                            </p>
+                        </div>
+
+                        <!--文章图片-->
+                        <div class="pull-right my-pull-right">
+                            <img src="../images/content4.png" alt="小图">
+                        </div>
+                    </a>
+
+                    <!--评论区域-->
+                    <div class="panel panel-default my-comment">
+                        <div class="panel-heading">最热评论(<span class="com-count">2</span>)<span class="close">X</span></div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友1</span>
+                                        <span class="com-span3">这个观点挺好！</span>
+                                        <span class="com-span4">47分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友2</span>
+                                        <span class="com-span3">我不赞成这个观点。</span>
+                                        <span class="com-span4">1小时2分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+
+                            </ul>
+                            <div class="form-inline">
+                                <textarea class="form-control" rows="2"></textarea>
+                                <button type="button" class="btn btn-info">评论</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--内容5-->
+                <div class="list-group my-list-content">
+                    <a href="#" class="list-group-item clearfix">
+                        <div class="pull-left clearfix">
+                            <h5>【视频：金正恩观看中国朝鲜艺术家联合演出】&nbsp;&nbsp;<small>-www.yystv.cn<span>&nbsp;42区</span></small></h5>
+                            <small>金正恩会见中国文艺工作者，11月3日下午在平壤万寿台艺术剧场观看了中朝文艺工作者首场联合演出，张杰、佟丽娅、张靓颖、张国立、孙楠等在列。</small>
+                            <p class="clearfix my-p-left pull-left">
+                                <span class="span1 span_click1" title="推荐"><span class="span_count1">1</span></span>
+                                <span class="span2 span_click2" title="评论"><span class="span_count2" >2</span></span>
+                                <span class="span3 span_click3" title="加入私藏"><span>私藏</span></span>
+                                <span class="span4"></span>
+                                <span class="span6">alex</span>
+                                <span class="span5">8分钟前</span>
+                                <small class="span7">入热榜</small>
+                            </p>
+                            <p class="clearfix my-p-right pull-right">
+                                <span class="span1_1">分享到</span>
+                                <span class="span2_1"></span>
+                                <span class="span3_1"></span>
+                                <span class="span4_1"></span>
+                                <span class="span5_1"></span>
+
+                            </p>
+                        </div>
+
+                        <!--文章图片-->
+                        <div class="pull-right my-pull-right">
+                            <img src="../images/content5.png" alt="小图">
+                        </div>
+                    </a>
+
+                    <!--评论区域-->
+                    <div class="panel panel-default my-comment">
+                        <div class="panel-heading">最热评论(<span class="com-count">2</span>)<span class="close">X</span></div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友1</span>
+                                        <span class="com-span3">这个观点挺好！</span>
+                                        <span class="com-span4">47分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友2</span>
+                                        <span class="com-span3">我不赞成这个观点。</span>
+                                        <span class="com-span4">1小时2分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+
+                            </ul>
+                            <div class="form-inline">
+                                <textarea class="form-control" rows="2"></textarea>
+                                <button type="button" class="btn btn-info">评论</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--内容6-->
+                <div class="list-group my-list-content">
+                    <a href="#" class="list-group-item clearfix">
+                        <div class="pull-left clearfix">
+                            <h5>【川藏交界金沙江“10•11白格堰塞湖”再现滑坡】&nbsp;&nbsp;<small>-www.jiemian.com<span>&nbsp;段子</span></small></h5>
+                            <small>11月3日晚，金沙江“10•11白格堰塞湖”留守观测点人员报告，金沙江白格堰塞湖原址坝前水位为2892.84米，21时上涨至2898.87米，水位上升6.03米，初步判断再次形成堰塞体。</small>
+                            <p class="clearfix my-p-left pull-left">
+                                <span class="span1 span_click1" title="推荐"><span class="span_count1">1</span></span>
+                                <span class="span2 span_click2" title="评论"><span class="span_count2" >2</span></span>
+                                <span class="span3 span_click3" title="加入私藏"><span>私藏</span></span>
+                                <span class="span4"></span>
+                                <span class="span6">alex</span>
+                                <span class="span5">10分钟前</span>
+                                <small class="span7">入热榜</small>
+                            </p>
+                            <p class="clearfix my-p-right pull-right">
+                                <span class="span1_1">分享到</span>
+                                <span class="span2_1"></span>
+                                <span class="span3_1"></span>
+                                <span class="span4_1"></span>
+                                <span class="span5_1"></span>
+
+                            </p>
+                        </div>
+
+                        <!--文章图片-->
+                        <div class="pull-right my-pull-right">
+                            <img src="../images/content6.png" alt="小图">
+                        </div>
+                    </a>
+
+                    <!--评论区域-->
+                    <div class="panel panel-default my-comment">
+                        <div class="panel-heading">最热评论(<span class="com-count">2</span>)<span class="close">X</span></div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友1</span>
+                                        <span class="com-span3">这个观点挺好！</span>
+                                        <span class="com-span4">4分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+                                <li class="list-group-item">
+                                    <small>
+                                        <span class="com-span1"></span>
+                                        <span class="com-span2">网友2</span>
+                                        <span class="com-span3">我不赞成这个观点。</span>
+                                        <span class="com-span4">1小时2分钟前&nbsp;发布</span>
+                                    </small>
+                                </li>
+
+                            </ul>
+                            <div class="form-inline">
+                                <textarea class="form-control" rows="2"></textarea>
+                                <button type="button" class="btn btn-info">评论</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--分页-->
+                <nav aria-label="Page navigation" style="text-align: center;">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <!--右侧列表内容-->
+            <div class="col-md-4">
+                <div class="my-top-img">
+                    <a href="#"><img src="../images/top-left.png" alt=""></a>
+                    <a href="#"><img src="../images/top-right.png" alt=""></a>
+                </div>
+
+                <a href="#">如何避免自己被封号</a>
+
+                <a href="#"><img src="../images/homepage_download.png" alt=""></a>
+
+                <div class="top-3"><span class="my-span-top">24小时全部<span> TOP 3</span></span></div>
+
+
+                    <!--警告框-->
+                   <div class="alert alert-success" role="alert">新热榜</div>
+
+                    <!-- 媒体对象 -->
+                    <div class="media">
+                      <div class="media-left media-top">
+                        <a href="#"><span class="badge">42</span></a>
+                      </div>
+
+                      <div class="media-body">
+                          <a href="#">
+                        <h4 class="media-heading">IG痛失亚军，含泪夺冠</h4>
+                        在刚刚结束的S8全球总决赛决赛中，iG 3:0 干脆利落击败FNC，获得了S8全球总决赛的冠军！这也是LPL赛区的第一个S赛冠军！恭喜@iG电子竞技俱乐部 ！！！ 此外，iG也成为了世界上第一支同时捧得不朽盾（Ti2）和S赛冠军（S8）的战队！
+                          </a>
+                      </div>
+
+                    </div>
+                <!---->
+                    <div class="media">
+                      <div class="media-left media-top">
+                        <a href="#"><span class="badge">42</span></a>
+                      </div>
+                      <div class="media-body">
+                          <a href="#">
+                        <h4 class="media-heading">《我就是演员》</h4>
+                     最新一期沈腾真的是笑死我了，临场应变能力真的是太优秀！四位演员，宋轶，杜淳，张小斐，檀健次，与沈腾来了四段即兴表演。每一段沈腾都完美演绎，不得不说沈腾接包袱的能力太厉害，哈哈哈哈今日份的快乐源泉
+                         </a>
+                      </div>
+                    </div>
+                <!---->
+                <div class="media">
+                      <div class="media-left media-top">
+                        <a href="#"><span class="badge">42</span></a>
+                      </div>
+                      <div class="media-body">
+                           <a href="#">
+                        <h4 class="media-heading">【央妈的火箭炮来了……】</h4>
+                        我请大家务必牢记一个原则——所有的金融创新，都是为了让普通人当接盘侠。
+                           </a>
+                      </div>
+                    </div>
+
+
+                <!--广告图片-->
+                <a href="#"><img src="../images/foot-ad.png" alt=""></a>
+
+            </div>
+        </div>
+
+    </div>
+
+<!--底部内容-->
+    <div class="footer-band">
+      <div class=" foot-nav">
+        <a href="#">关于我们</a><span>|</span>
+        <a href="#">联系我们</a><span>|</span>
+        <a href="#">服务条款</a><span>|</span>
+        <a href="#">隐私政策</a><span>|</span>
+        <a href="#">抽屉新热榜工具</a><span>|</span>
+        <a href="#">下载客户端</a><span>|</span>
+        <a href="#">意见与反馈</a><span>|</span>
+        <a href="#">友情链接</a><span>|</span>
+        <a href="#">公告</a>
+        <a href="#"><img src="../images/foot-photo1.png"></a>
+      </div>
+      <div class=" foot-nav2">
+          <a href="#"><img src="../images/foot-photo2.png"></a>
+          <span class="foot_d">旗下站点</span>
+          <span class="foot_a">©2018chouti.com</span>
+          <span class="foot_d">京ICP备09053974号-3 京公网安备 110102004562</span>
+          <div class="foot-nav3">
+              <span>违法和不良信息举报： 电话：010-58302039 </span>
+              <a href="#">邮箱：jubao@chouti.com</a>
+          </div>
+          <div class="foot-nav4">
+             <span>版权所有：北京格致璞科技有限公司</span>
+          </div>
+      </div>
+
+    </div>
+
+    <!--回到顶部图标-->
+    <div class="move-top" title="回到顶部"><img src="../images/move-top.png"></div>
+  
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
